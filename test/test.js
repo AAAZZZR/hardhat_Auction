@@ -24,18 +24,10 @@ describe("SmartContract", function () {
       expect(await auctionContract.owner()).to.equal(owner.address);
     })
 
-    // it("print start block num",async function(){
-    //   const {auctionContract} = await loadFixture(deployInitialFixture);
-    //   expect(await auctionContract.startBlock()).to.equal(1)
-    // })
-    // it("print end block num",async function(){
-    //   const {auctionContract} = await loadFixture(deployInitialFixture);
-    //   expect(await auctionContract.endBlock()).to.equal(4)
-    // })
 
   })
 
-  describe.only("function placeBid", function(){
+  describe("function placeBid", function(){
     it("owner cannot call it",async function(){
       const {owner,auctionContract} = await loadFixture(deployInitialFixture);
       await expect(auctionContract.connect(owner).placeBid()).to.be.reverted;
@@ -50,12 +42,12 @@ describe("SmartContract", function () {
     it("Test who is higher bidder",async function(){
       const {auctionContract,addr2} = await loadFixture(deployInitialFixture);
       await auctionContract.connect(addr2).placeBid({value:2});
-      await expect(auctionContract.highestBidder()).to.equal(addr2.address);
+      expect(await auctionContract.highestBidder()).to.equal(addr2.address);
     })
   })
 
 
-  describe("Withdrawals", function () {
+  describe("finalizedAuction", function () {
     describe("Validations", function () {
       it("Should revert with the right error if called too soon", async function () {
         const { lock } = await loadFixture(deployOneYearLockFixture);
