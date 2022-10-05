@@ -11,5 +11,6 @@ REPORT_GAS=true npx hardhat test
 npx hardhat node
 npx hardhat run scripts/deploy.js
 ```
-Unit test is not done
-[Contract address](https://goerli.etherscan.io/address/0x70BA2fa8AE2C3A5e3537E2d625Fcbc056A398ECE) 
+Unit test is not done.
+
+[Goerli network contract address](https://goerli.etherscan.io/address/0x70BA2fa8AE2C3A5e3537E2d625Fcbc056A398ECE) 
